@@ -30,3 +30,4 @@ jobs:
           node app.js &
           sleep 5
           curl http://localhost:3000
+          curl http://localhost:3000
