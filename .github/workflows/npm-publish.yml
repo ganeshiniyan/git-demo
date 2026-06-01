@@ -49,12 +49,9 @@ jobs:
           ls -R dist
 
       - name: Test application
-      run: |
-        node dist/app.js &
-        APP_PID=$!
-
-        sleep 5
-
-        curl --fail http://localhost:3000
-
-        kill $APP_PID
+        run: |
+          node dist/app.js &
+          APP_PID=$!
+          sleep 5
+          curl --fail http://localhost:3000
+          kill $APP_PID
