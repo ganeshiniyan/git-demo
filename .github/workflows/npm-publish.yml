@@ -22,12 +22,35 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build
-
-      - name: Start app (for testing)
+      - name: Build app
         run: |
-          node app.js &
+          mkdir -p dist
+          cp app.js dist/
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-build
+          path: dist/
+
+  run:
+    needs: build
+    runs-on: self-hosted
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node-build
+          path: dist
+
+      - name: Verify artifact
+        run: |
+          ls -R dist
+
+      - name: Run application
+        run: |
+          node dist/app.js
           sleep 5
           curl http://localhost:3000
           curl http://localhost:3000
