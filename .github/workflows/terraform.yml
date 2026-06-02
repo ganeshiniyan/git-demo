@@ -31,4 +31,4 @@ jobs:
         run: terraform init -reconfigure
 
       - name: Terraform Plan
-        run: terraform plan -var-file="dev.tfvar"
+        run: terraform plan -var-file="dev.tfvars"
