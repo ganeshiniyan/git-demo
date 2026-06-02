@@ -1,4 +1,4 @@
-bucket_name = "ganesh-iniyan-10"
+bucket_name = "ganesh-iniyan-12"
 region = "us-east-1"
 environment = "dev"
 cidr_block = "10.0.0.0/16"
