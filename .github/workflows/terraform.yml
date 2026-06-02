@@ -28,7 +28,7 @@ jobs:
         run: aws sts get-caller-identity
 
       - name: Change Directory
-        run: cd terraform
+        run: cd /Users/ganeshiniyan/Project/Git-docker/git-demo/terraform
 
       - name: Terraform Init
         run: terraform init -reconfigure
