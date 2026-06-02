@@ -24,8 +24,12 @@ jobs:
       - name: Verify Terraform Installation
         run: terraform version
 
-      - name: Verify AWS Credentials
-        run: aws sts get-caller-identity
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
 
       - name: Terraform Init
         working-directory: terraform
