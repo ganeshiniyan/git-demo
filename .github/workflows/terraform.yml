@@ -41,4 +41,4 @@ jobs:
 
       - name: Terraform Apply
         working-directory: terraform
-        run: terraform apply -var-file="dev.tfvars"
+        run: erraform apply -auto-approve -var-file="dev.tfvars"
