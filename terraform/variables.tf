@@ -25,3 +25,8 @@ variable "subnet_cidr_block" {
     description = "The CIDR block for the subnet"
     type        = string
 }
+
+variable "repository_name" {
+    description = "The ecr repository name"
+    type        = string
+}

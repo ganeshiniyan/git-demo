@@ -27,3 +27,7 @@ module "ec2" {
    ami_id = data.aws_ami.ubuntu.id
 }
 
+module "ecr" {
+  source = "./ecr"
+  repository_name = var.repository_name
+}
