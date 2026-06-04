@@ -37,17 +37,17 @@ jobs:
           docker build -t backend ./docker-app/backend
 
           docker tag backend:latest \
-            ${{ steps.login-ecr.outputs.registry }}/backend:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/ganesh-backend-repo:${{ github.sha }}
 
           docker push \
-            ${{ steps.login-ecr.outputs.registry }}/backend:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/ganesh-backend-repo:${{ github.sha }}
 
       - name: Build Frontend
         run: |
           docker build -t frontend ./docker-app/frontend
 
           docker tag frontend:latest \
-            ${{ steps.login-ecr.outputs.registry }}/frontend:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/ganesh-frontend-repo:${{ github.sha }}
 
           docker push \
-            ${{ steps.login-ecr.outputs.registry }}/frontend:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/ganesh-frontend-repo:${{ github.sha }}
