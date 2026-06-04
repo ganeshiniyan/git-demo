@@ -19,14 +19,29 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: terraform
+        run: terraform plan -var-file="dev.tfvars"
+
+      - name: Terraform Apply
+        working-directory: terraform
+        run: terraform apply -auto-approve -var-file="dev.tfvars"
+      
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
       - name: Build Backend
         uses: docker/build-push-action@v5
         with:
           context: ./docker-app/backend
           push: true
           tags: |
-            ganeshiniyan/backend:latest
-            ganeshiniyan/backend:${{ github.sha }}
+            ganeshiniyan/ganesh-frontend-repo:${{ github.sha }}
 
       - name: Build Frontend
         uses: docker/build-push-action@v5
@@ -34,5 +49,4 @@ jobs:
           context: ./docker-app/frontend
           push: true
           tags: |
-            ganeshiniyan/frontend:latest
-            ganeshiniyan/frontend:${{ github.sha }}
+            ganeshiniyan/ganesh-frontend-repo:${{ github.sha }}

@@ -26,7 +26,12 @@ variable "subnet_cidr_block" {
     type        = string
 }
 
-variable "repository_name" {
+variable "frontend_repository_name" {
+    description = "The ecr repository name"
+    type        = string
+}
+
+variable "backend_repository_name" {
     description = "The ecr repository name"
     type        = string
 }
