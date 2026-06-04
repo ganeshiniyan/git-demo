@@ -11,9 +11,9 @@ app.use((req, res, next) => {
   });
 
 const pool = new Pool({
-  host: 'database',
+  host: 'postgres-service',
   user: 'postgres',
-  password: 'postgres',
+  password: 'password',
   database: 'mydb',
   port: 5432
 });
